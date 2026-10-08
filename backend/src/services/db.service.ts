@@ -83,7 +83,9 @@ export class DatabaseService {
   }
 
   // --- Items ---
-  async createItem(item: Omit<Item, 'id' | 'createdAt' | 'updatedAt'> & { id?: string }): Promise<Item> {
+  async createItem(
+    item: Omit<Item, 'id' | 'status' | 'createdAt' | 'updatedAt'> & { id?: string; status?: ItemStatus }
+  ): Promise<Item> {
     const now = new Date().toISOString();
     const id = item.id || uuidv4();
     const newItem: Item = {

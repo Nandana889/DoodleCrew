@@ -63,7 +63,11 @@ export class AIService {
             confidence: validated.confidence,
             matchedAttributes: validated.matchedAttributes,
             reasons: validated.reasons,
-            modelMetadata: validated.modelMetadata,
+            modelMetadata: {
+              model: validated.modelMetadata?.model || 'campusfind-ai-gemma',
+              timestamp: validated.modelMetadata?.timestamp || new Date().toISOString(),
+              version: validated.modelMetadata?.version || '1.0',
+            },
           };
         }
       } catch (err: unknown) {
