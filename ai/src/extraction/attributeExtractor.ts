@@ -57,7 +57,7 @@ export class AttributeExtractor {
 
   constructor(options?: { gemmaApiKey?: string; gemmaApiUrl?: string }) {
     this.gemmaApiKey = options?.gemmaApiKey || process.env.GEMMA_API_KEY || process.env.GOOGLE_AI_API_KEY;
-    this.gemmaApiUrl = options?.gemmaApiUrl || process.env.GEMMA_API_URL;
+    this.gemmaApiUrl = options?.gemmaApiUrl || process.env.GEMMA_API_URL || 'https://generativelanguage.googleapis.com/v1beta/models/gemma-2-9b-it:generateContent';
   }
 
   /**
@@ -227,12 +227,17 @@ Description: ${report.description}
 
 Output ONLY valid raw JSON.`;
 
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json'
+    };
+    if (this.gemmaApiKey) {
+      headers['x-goog-api-key'] = this.gemmaApiKey;
+      headers['Authorization'] = `Bearer ${this.gemmaApiKey}`;
+    }
+
     const response = await fetch(this.gemmaApiUrl!, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.gemmaApiKey}`
-      },
+      headers,
       body: JSON.stringify({
         contents: [{ parts: [{ text: prompt }] }],
         generationConfig: {
