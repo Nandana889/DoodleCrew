@@ -1,0 +1,14 @@
+{
+  "name": "campusfind-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "ai"
+  ],
+  "scripts": {
+    "dev": "npm run --prefix ai dev",
+    "test": "npm run --prefix ai test",
+    "build": "npm run --prefix ai build",
+    "lint": "npm run --prefix ai lint"
+  }
+}
