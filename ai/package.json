@@ -1,0 +1,29 @@
+{
+  "name": "@campusfind/ai",
+  "version": "1.0.0",
+  "description": "CampusFind AI Pipeline and Multi-Factor Matching Engine",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test --import tsx tests/**/*.test.ts",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [
+    "campusfind",
+    "ai",
+    "matching-engine",
+    "gemma",
+    "lost-and-found"
+  ],
+  "author": "CampusFind Team (Member 4: AI + Matching Engineer)",
+  "license": "MIT",
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4"
+  }
+}
