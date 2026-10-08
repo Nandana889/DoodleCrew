@@ -1,2 +1,0 @@
-# DoodleCrew
-Hactoberfest hackathon
